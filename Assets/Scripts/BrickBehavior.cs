@@ -51,6 +51,6 @@ public class BrickBehavior : MonoBehaviour
 
 	void Update()
 	{
-		gameScript.TakeScore(ScoreStuff());
+//		gameScript.TakeScore(ScoreStuff());
 	}
 }
