@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5cbce2f-0348-435d-b149-d1c62bd94a4f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Image/block_blue 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Image/block_blue 1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Image/block_blue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Image/block_blue.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Ball.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Ball.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanid2DNew/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanid2DNew/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Image/Platform.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Image/Platform.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Platform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/block_blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/block_blue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arcanoid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arcanoid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BrickBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BrickBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerPlatform.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +54,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/BlocksController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -77,6 +69,22 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerPlatform.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <marker date="1658413716023" expanded="true" signature="63:1113" ph="{...}" />
+                <marker date="1658413716023" expanded="true" signature="309:428" ph="{...}" />
+                <marker date="1658413716023" expanded="true" signature="468:835" ph="{...}" />
+                <marker date="1658413716023" expanded="true" signature="857:1111" ph="{...}" />
+                <marker date="1658413716023" expanded="true" signature="1017:1105" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -85,6 +93,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BrickBehavior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BlocksController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerPlatform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -92,6 +101,7 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BrickBehavior.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerPlatform.cs" />
       </list>
     </option>
   </component>
@@ -148,10 +158,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="16400">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="16400" />
       <method v="2" />
     </configuration>
   </component>
@@ -165,12 +175,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658405492005</updated>
-      <workItem from="1658405503282" duration="1405000" />
+      <workItem from="1658405503282" duration="3125000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1405000" />
+    <option name="totallyTimeSpent" value="3125000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -182,14 +192,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="886" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Captures" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2506427" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2506427" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
@@ -205,7 +215,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.03984064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -279,6 +289,20 @@
             <marker date="1657784092457" expanded="true" signature="606:1197" ph="{...}" />
             <marker date="1657784092457" expanded="true" signature="739:1158" ph="{...}" />
             <marker date="1657784092457" expanded="true" signature="945:1111" ph="/* var block = Instantiate(blockPrefab, tilePosition, Quaternion.Euler(Vector3.zero)); ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerPlatform.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <marker date="1658413716023" expanded="true" signature="63:1113" ph="{...}" />
+            <marker date="1658413716023" expanded="true" signature="309:428" ph="{...}" />
+            <marker date="1658413716023" expanded="true" signature="468:835" ph="{...}" />
+            <marker date="1658413716023" expanded="true" signature="857:1111" ph="{...}" />
+            <marker date="1658413716023" expanded="true" signature="1017:1105" ph="{...}" />
           </folding>
         </state>
       </provider>
