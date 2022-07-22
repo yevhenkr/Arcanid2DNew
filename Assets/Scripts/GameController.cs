@@ -1,24 +1,25 @@
-﻿using UnityEngine;
+﻿using Pools;
+using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
   [SerializeField] private BlocksController blocksController;
-  [SerializeField] private PlayerSpawner objectSpawner;
+  [SerializeField] private RacketController racketController;
   [SerializeField] private UIManager uiManager;
   [SerializeField] private BottomBoard bottomBoard;
 
   private void Start()
   {
     uiManager.OnPushStart += CreateLevelOne;
-    objectSpawner.BallTouchedBlock += BallTouchBlock;
+    racketController.BallTouchedBlock += BallTouchBlock;
     bottomBoard.OnBallTouchBottom += GameEnd;
-    uiManager.ShowStartMenuButtons();
+    uiManager.ShowMenu();
   }
 
   private void CreateLevelOne()
   {
-    objectSpawner.SpawnBall();
-    objectSpawner.SpawnPlatform();
+    racketController.SpawnBall();
+    racketController.SpawnPlatform();
     blocksController.GenerationBlocks();
   }
 
@@ -29,6 +30,9 @@ public class GameController : MonoBehaviour
 
    private void GameEnd()
    {
+       uiManager.ShowMenu();
+       racketController.DestroyRacket();
+        blocksController.AllBlocksToPool();
        print("Game end");
    }
 }

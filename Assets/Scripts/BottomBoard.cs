@@ -10,6 +10,7 @@ public class BottomBoard : MonoBehaviour
         if (collider.gameObject.TryGetComponent(out Ball ball))
         {
             OnBallTouchBottom?.Invoke();
+            Destroy(ball.gameObject);
         }
     }
 }

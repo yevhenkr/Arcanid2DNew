@@ -3,22 +3,23 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public CounterPanel counter;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private CounterPanel counter;
     public event Action OnPushStart;
 
-[SerializeField] GameObject _buttonStart;
 
-public void ShowStartMenuButtons()
-{
-        _buttonStart.SetActive(true);
+    public void ShowMenu()
+    {
+        menuPanel.SetActive(true);
         counter.FerstStart();
     }
 
-public void PushStartButton()
-{
-    OnPushStart?.Invoke();
-    _buttonStart.active = false;
-}
+    public void PushStartButton()
+    {
+        OnPushStart?.Invoke();
+        menuPanel.SetActive(false);
+    }
+
     public void CounterAddOne()
     {
         counter.AddedCount();
