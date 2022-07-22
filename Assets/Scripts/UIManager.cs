@@ -27,12 +27,10 @@ public class UIManager : MonoBehaviour
     {
         counter.AddedCount();
     }
-    
-     public void ShowHideRithPanel()
-     {
-         bool isActiv = rightPanel.active;
+
+    public void ShowHideRithPanel()
+    {
+        bool isActiv = rightPanel.active;
         rightPanel.SetActive(!isActiv);
     }
-    
-    
 }
