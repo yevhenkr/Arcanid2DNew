@@ -2,26 +2,33 @@
 
 public class GameController : MonoBehaviour
 {
-  [SerializeField] private BlocksController _blocksController;
-  [SerializeField] private PlayerSpawner _objectSpawner;
-  [SerializeField] private UIManager _uiManager;
+  [SerializeField] private BlocksController blocksController;
+  [SerializeField] private PlayerSpawner objectSpawner;
+  [SerializeField] private UIManager uiManager;
+  [SerializeField] private BottomBoard bottomBoard;
 
   private void Start()
   {
-    _uiManager.OnPushStart += CreateLevelOne;
-    _objectSpawner.BallTouchedBlock += BallTouchBlock;
-    _uiManager.ShowStartMenuButtons();
+    uiManager.OnPushStart += CreateLevelOne;
+    objectSpawner.BallTouchedBlock += BallTouchBlock;
+    bottomBoard.OnBallTouchBottom += GameEnd;
+    uiManager.ShowStartMenuButtons();
   }
 
   private void CreateLevelOne()
   {
-    _objectSpawner.SpawnBall();
-    _objectSpawner.SpawnPlatform();
-    _blocksController.GenerationBlocks();
+    objectSpawner.SpawnBall();
+    objectSpawner.SpawnPlatform();
+    blocksController.GenerationBlocks();
   }
 
    private void BallTouchBlock()
     {
-        _uiManager.CounterAddOne();
+        uiManager.CounterAddOne();
     }
+
+   private void GameEnd()
+   {
+       print("Game end");
+   }
 }
