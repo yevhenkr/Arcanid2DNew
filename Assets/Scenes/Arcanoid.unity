@@ -647,6 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 1137850038}
+  rightPanel: {fileID: 2050144326}
   counter: {fileID: 1263174399}
 --- !u!1 &519420028
 GameObject:
@@ -1374,16 +1375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55df47676a4e13e4597b49c2440b5b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startX: -5.1
-  startY: -0.5
-  EasyBrickTile: {fileID: 942369213106572957, guid: 4c46b604f4fdc314181a89f8587136bb,
-    type: 3}
-  HardBrickTile: {fileID: 4158612200169748875, guid: 661ca046e7e2a3f4ba44cdef29980484,
-    type: 3}
-  MediumBrickTile: {fileID: 4158612200169748875, guid: 071d6f6bcdba4a34c9cb4ee875659161,
-    type: 3}
-  gameScript: {fileID: 0}
-  brickHolder: {fileID: 0}
 --- !u!4 &1058032545
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,10 +1401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a21fc9a2cb8d914eb25d90765f23a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  gameOver: 0
-  ball: {fileID: 0}
-  boardScript: {fileID: 0}
 --- !u!1 &1137850038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,13 +2602,14 @@ GameObject:
   - component: {fileID: 2050144323}
   - component: {fileID: 2050144325}
   - component: {fileID: 2050144324}
+  - component: {fileID: 2050144326}
   m_Layer: 5
-  m_Name: GameInfoPanel
+  m_Name: RightPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2050144323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2680,3 +2668,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050144322}
   m_CullTransparentMesh: 0
+--- !u!114 &2050144326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050144322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed5bccfb6fc9c6419f1f3f836b4e872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
-    [SerializeField] private GameObject rightPanel;
+    [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
     public event Action OnPushStart;
 
@@ -13,24 +13,18 @@ public class UIManager : MonoBehaviour
     {
         menuPanel.SetActive(true);
         counter.FerstStart();
-        ShowHideRithPanel();
+        rightPanel.SetActiveFalce();
     }
 
     public void PushStartButton()
     {
         OnPushStart?.Invoke();
         menuPanel.SetActive(false);
-        ShowHideRithPanel();
+        rightPanel.SetActive();
     }
 
     public void CounterAddOne()
     {
         counter.AddedCount();
-    }
-
-    public void ShowHideRithPanel()
-    {
-        bool isActiv = rightPanel.active;
-        rightPanel.SetActive(!isActiv);
     }
 }
