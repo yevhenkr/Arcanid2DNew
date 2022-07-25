@@ -6,6 +6,8 @@ public class BlocksController : MonoBehaviour
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private Vector2 mapBlocks;
     [SerializeField] private List<GameObject> poolBloks;
+    List<string> listBlocksCollor = new List<string>(){"red", "green", "blue", "yellow","pink"};
+
 
     private void Start()
     {
@@ -30,6 +32,9 @@ public class BlocksController : MonoBehaviour
                     Pools.PoolsManager.GetObject(blockPrefab.name, tilePosition, Quaternion.Euler(Vector3.zero));
                 // var block = Instantiate(blockPrefab, tilePosition, Quaternion.Euler(Vector3.zero));
                 // block.GetComponent<Block>().OnDestroy += DestroyObjectEvent;
+                string randomColor = listBlocksCollor[Random.Range(0, listBlocksCollor.Count)];
+                bullet.GetComponent<SpriteRenderer>().sprite =  Resources.Load($"images/{randomColor}", typeof(Sprite)) as Sprite;
+
                 xPos += xOffset;
                 poolBloks.Add(bullet);
             }
@@ -37,7 +42,6 @@ public class BlocksController : MonoBehaviour
             yPos -= yOffset;
         }
     }
-
     public void AllBlocksToPool()
     {
         for (int i = 0; i < poolBloks.Count; i++)
