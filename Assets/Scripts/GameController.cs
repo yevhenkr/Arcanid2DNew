@@ -2,7 +2,7 @@
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private BlocksController blocksController;
+    [SerializeField] private PoolBlocks blocksController;
     [SerializeField] private RacketController racketController;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
@@ -31,6 +31,6 @@ public class GameController : MonoBehaviour
     {
         uiManager.ShowMenu();
         racketController.DestroyRacket();
-        blocksController.AllBlocksToPool();
+        //blocksController.AllBlocksToPool();
     }
 }

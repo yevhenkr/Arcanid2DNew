@@ -1,45 +1,57 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pools
+public class PoolBlocks: MonoBehaviour
 {
-    //[AddComponentMenu("Pool/ObjectPooling ")]
-    public class PoolBlocks : MonoBehaviour
+    [SerializeField] private int poolCount = 3;     
+    [SerializeField] private bool autoExpand = false; 
+    [SerializeField] private Block blockPrefab;
+    private PoolMono<Block> pool;
+    private int columnCount = 5;
+    [SerializeField] private List<GameObject> poolBloks;
+
+    private void Start()
     {
-        List<Block> objects;
-        Transform objectsParent;
+        this.pool = new PoolMono<Block>(this.blockPrefab, this.poolCount, this.transform);
+        //this.pool.autoExpand = this.autoExpand; 
+    }
 
-        void AddObject(Block sample, Transform objects_parent)
-        {
-            GameObject temp = GameObject.Instantiate(sample.gameObject);
-            temp.name = sample.name;
-            temp.transform.SetParent(objects_parent);
-            objects.Add(temp.GetComponent<Block>());
-            temp.SetActive(false);
-        }
+    public void GenerationBlocks()
+    {
+        float blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
+        float blockHeight = blockPrefab.GetComponent<BoxCollider2D>().size.y;
+        float xOffset = blockWidth + blockWidth / 10;
+        float yOffset = blockHeight + blockHeight / 10;
+        var xPos = blockPrefab.GetComponent<Transform>().position.x;
+        var firstPos = blockPrefab.GetComponent<Transform>().position.x;
+        var yPos = blockPrefab.GetComponent<Transform>().position.y;
+        var currentColumn = 0;
+        var currentBlock = 0;
 
-        public void Initialize(int count, Block sample, Transform objects_parent)
+        for (int x = 0; x < poolCount; x++)
         {
-            objects = new List<Block>(); //инициализируем List
-            objectsParent = objects_parent; //инициализируем локальную переменную для последующего использования
-            for (int i = 0; i < count; i++)
+            currentBlock++;
+            currentColumn++;
+            if (currentColumn == columnCount + 1)
             {
-                AddObject(sample, objects_parent); //создаем объекты до указанного количества
+                currentColumn = 1;
+                xPos = firstPos;
+                //poolBloks.Add(bullet);
+                yPos -= yOffset;
             }
-        }
+            this.CreateBlock(xPos, yPos);
+            //Vector2 tilePosition = new Vector2(xPos, yPos);
+            //var bullet = Pools.PoolsManager.GetObject(blockPrefab.name, tilePosition, Quaternion.Euler(Vector3.zero));
+            xPos += xOffset;
 
-        public Block GetObject()
-        {
-            for (int i = 0; i < objects.Count; i++)
-            {
-                if (objects[i].gameObject.activeInHierarchy == false)
-                {
-                    return objects[i];
-                }
-            }
-
-            AddObject(objects[0], objectsParent);
-            return objects[objects.Count - 1];
         }
+    }
+
+        private void CreateBlock(float xPos, float yPos)
+    {
+        var pos = new  Vector2(xPos, yPos);
+        var block = this.pool.GetFreeElement();
+        block.transform.position = pos;
     }
 }

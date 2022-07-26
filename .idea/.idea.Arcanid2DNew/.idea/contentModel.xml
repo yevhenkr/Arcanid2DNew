@@ -19,9 +19,10 @@
           <e p="PlayerSpawner.cs" t="Include" />
           <e p="Pools" t="Include">
             <e p="PoolBlocks.cs" t="Include" />
-            <e p="PoolManager.cs" t="Include" />
-            <e p="SetupPools.cs" t="Include" />
+            <e p="PoolMono.cs" t="Include" />
           </e>
+          <e p="RacketController.cs" t="Include" />
+          <e p="RightPanel.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
         </e>
       </e>
