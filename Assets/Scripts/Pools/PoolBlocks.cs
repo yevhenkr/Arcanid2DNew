@@ -3,9 +3,12 @@ using UnityEngine;
 public class PoolBlocks : MonoBehaviour
 {
     [SerializeField] private Block blockPrefab;
-    [SerializeField] private int poolCount = 3;    
+    [SerializeField] private int poolCount = 3;
     [SerializeField] private int columnCount = 5;
-    private PoolMono<Block> pool;
+    [SerializeField] private Sprite[] listSprites;
+    [SerializeField] private Sprite[] countPrefabType;
+
+    private PoolMono pool;
     private float blockWidth;
     private float blockHeight;
 
@@ -13,7 +16,7 @@ public class PoolBlocks : MonoBehaviour
     {
         blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
         blockHeight = blockPrefab.GetComponent<BoxCollider2D>().size.y;
-        this.pool = new PoolMono<Block>(this.blockPrefab, this.poolCount, this.transform);
+        this.pool = new PoolMono(this.blockPrefab.gameObject, this.poolCount, this.transform);
     }
 
     public void GenerationBlocks()
@@ -47,7 +50,23 @@ public class PoolBlocks : MonoBehaviour
         var pos = new Vector2(xPos, yPos);
         var block = this.pool.GetFreeElement();
         block.transform.position = pos;
+
+        int typePrefab = Random.Range(0, 5);
+        SetHealthValue(block, typePrefab);
+        SetSprite(block, typePrefab);
     }
+
+    public void SetHealthValue(GameObject createadObject, int typePrefab)
+    {
+        createadObject.GetComponent<Block>().SetHealthValue(typePrefab);
+    }
+
+    public void SetSprite(GameObject createadObject, int typePrefab)
+    {
+        var t = listSprites[typePrefab];
+        createadObject.GetComponent<Block>().SetSprite(t);
+    }
+
 
     public void HideAllObjectsToPool()
     {

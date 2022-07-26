@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PoolMono<T> where T : MonoBehaviour
+public class PoolMono : MonoBehaviour
 {
-    public T Prefab { get; }
+    public GameObject Prefab { get; }
     public bool AutoExpand { get; set; }
     public Transform Container { get; }
 
-    private List<T> _pool;
+    private List<GameObject> _pool;
+    private List<string> listSprits = new List<string>(){"ashdsj","askls"};
+    private int countPrefabType = 5;
 
-    public PoolMono(T prefab, int count)
+    public PoolMono(GameObject prefab, int count)
     {
         Prefab = prefab;
         Container = null;
@@ -19,7 +21,7 @@ public class PoolMono<T> where T : MonoBehaviour
         CreatePool(count);
     }
 
-    public PoolMono(T prefab, int count, Transform container)
+    public PoolMono(GameObject prefab, int count, Transform container)
     {
         Prefab = prefab;
         Container = container;
@@ -29,13 +31,13 @@ public class PoolMono<T> where T : MonoBehaviour
 
     private void CreatePool(int count)
     {
-        _pool = new List<T>();
+        _pool = new List<GameObject>();
 
         for (int i = 0; i < count; i++)
             CreateObject();
     }
 
-    private T CreateObject(bool isActiveByDefault = false)
+    private GameObject CreateObject(bool isActiveByDefault = false)
     {
         var createdObject = UnityEngine.Object.Instantiate(Prefab, Container);
         createdObject.gameObject.SetActive(isActiveByDefault);
@@ -43,7 +45,7 @@ public class PoolMono<T> where T : MonoBehaviour
         return createdObject;
     }
 
-    public bool HasFreeElement(out T element)
+    public bool HasFreeElement(out GameObject element)
     {
         foreach (var mono in _pool)
         {
@@ -59,14 +61,14 @@ public class PoolMono<T> where T : MonoBehaviour
         return false;
     }
 
-    public T GetFreeElement()
+    public GameObject GetFreeElement()
     {
         if (HasFreeElement(out var element))
             return element;
         if (AutoExpand)
             return CreateObject(true);
 
-        throw new Exception($"There is no free elements in pool of type {typeof(T)}");
+        throw new Exception($"There is no free elements in pool of type {typeof(GameObject)}");
     }
 
     public void HideAllObjectsToPool()

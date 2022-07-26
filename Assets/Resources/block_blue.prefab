@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6945549220767610102}
   - component: {fileID: 5847931230845236841}
   - component: {fileID: 372323329105268537}
-  - component: {fileID: 2545406465614287888}
   m_Layer: 0
   m_Name: block_blue
   m_TagString: Untagged
@@ -123,18 +122,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a90f6491cd1224eb987408ba5c5445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2545406465614287888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045471921374965307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06072addc3236bc40a473dd568bdd8f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPoints: 2
-  dmgSprite: {fileID: 21300000, guid: ff6536e069ab86c43a4cad8f0706e551, type: 3}
-  gameScript: {fileID: 0}
