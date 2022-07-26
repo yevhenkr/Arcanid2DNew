@@ -54,4 +54,9 @@ public class PoolBlocks: MonoBehaviour
         var block = this.pool.GetFreeElement();
         block.transform.position = pos;
     }
+        
+        public void HideAllObjectsToPool()
+        {
+            this.pool.HideAllObjectsToPool();
+        }
 }

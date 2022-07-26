@@ -31,6 +31,6 @@ public class GameController : MonoBehaviour
     {
         uiManager.ShowMenu();
         racketController.DestroyRacket();
-        //blocksController.AllBlocksToPool();
+        blocksController.HideAllObjectsToPool();
     }
 }
