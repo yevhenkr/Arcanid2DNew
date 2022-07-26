@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,8 +33,8 @@ public class PoolMono<T> where T : MonoBehaviour
 
         for (int i = 0; i < count; i++)
             CreateObject();
-
     }
+
     private T CreateObject(bool isActiveByDefault = false)
     {
         var createdObject = UnityEngine.Object.Instantiate(Prefab, Container);
@@ -55,6 +54,7 @@ public class PoolMono<T> where T : MonoBehaviour
                 return true;
             }
         }
+
         element = null;
         return false;
     }
