@@ -47,27 +47,20 @@ public class PoolBlocks : MonoBehaviour
                 xPosPrefab = startPosX;
                 yPosPrefab -= yOffset;
             }
-            this.SetParametrInBlock(xPosPrefab, yPosPrefab);
+
+            var block = this.pool.GetFreeElement();
+            if (firstStart)
+            {
+                block.transform.position = new Vector2(xPosPrefab, yPosPrefab);
+                block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
+            }
+
+            int blockType = Random.Range(0, listSprites.Length);
+            SetHealthValue(block, blockType);
+            SetSprite(block, blockType);
             xPosPrefab += xOffset;
         }
         firstStart = false;
-    }
-    
-    private void SetParametrInBlock(float xPos, float yPos)
-    {
-
-        var block = this.pool.GetFreeElement();
-        if (firstStart)
-        {
-            var pos = new Vector2(xPos, yPos);
-            block.transform.position = pos;
-            block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
-        }
-
-        int typePrefab = Random.Range(0, listSprites.Length);
-        SetHealthValue(block, typePrefab);
-        SetSprite(block, typePrefab);
-        
     }
 
     public void SetHealthValue(GameObject createadObject, int typePrefab)
