@@ -7,24 +7,26 @@ public class PoolBlocks : MonoBehaviour
     [SerializeField] private int columnCount = 5;
     [SerializeField] private Sprite[] listSprites;
     [SerializeField] private Sprite[] countPrefabType;
-
     private PoolMono pool;
     private float blockWidth;
     private float blockHeight;
-
+    private float xOffset;
+    private float yOffset;
+    private float startPosX;
     private void Start()
     {
         blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
         blockHeight = blockPrefab.GetComponent<BoxCollider2D>().size.y;
+        xOffset = blockWidth + blockWidth / 10;
+        yOffset = blockHeight + blockHeight / 10;
+        startPosX = blockPrefab.GetComponent<Transform>().position.x;
         this.pool = new PoolMono(this.blockPrefab.gameObject, this.poolCount, this.transform);
+        
     }
 
     public void GenerationBlocks()
     {
-        float xOffset = blockWidth + blockWidth / 10;
-        float yOffset = blockHeight + blockHeight / 10;
         var xPos = blockPrefab.GetComponent<Transform>().position.x;
-        var startPosX = blockPrefab.GetComponent<Transform>().position.x;
         var yPos = blockPrefab.GetComponent<Transform>().position.y;
         var currentColumn = 0;
         var currentBlock = 0;
@@ -39,7 +41,6 @@ public class PoolBlocks : MonoBehaviour
                 xPos = startPosX;
                 yPos -= yOffset;
             }
-
             this.CreateBlock(xPos, yPos);
             xPos += xOffset;
         }
@@ -51,7 +52,7 @@ public class PoolBlocks : MonoBehaviour
         var block = this.pool.GetFreeElement();
         block.transform.position = pos;
 
-        int typePrefab = Random.Range(0, 5);
+        int typePrefab = Random.Range(0, listSprites.Length);
         SetHealthValue(block, typePrefab);
         SetSprite(block, typePrefab);
     }

@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-public class BallBehaviour : MonoBehaviour
+public class BallMovement : MonoBehaviour
 {
-    public float ballSpeed = 2;
-
+    [SerializeField] private float ballSpeed = 2;
     private Rigidbody2D ballBody;
-
+    private int jump;
 
     void Awake()
     {
@@ -13,11 +12,8 @@ public class BallBehaviour : MonoBehaviour
         ballBody.AddForce(-transform.up * ballSpeed);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixUpdate()
     {
-        int jump;
-
         jump = (int) Input.GetAxisRaw("Vertical");
         if (jump > 0)
         {

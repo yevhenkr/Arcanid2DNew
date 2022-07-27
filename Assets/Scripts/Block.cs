@@ -2,11 +2,11 @@
 
 public class Block : MonoBehaviour
 {
-    private int HealthValue { get; set; }
+    private int healthPoint;
 
     public void SetHealthValue(int health)
     {
-        HealthValue = health;
+        healthPoint = health;
     }
     public void SetSprite(Sprite sprite)
     {
