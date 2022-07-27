@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PoolBlocks : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class PoolBlocks : MonoBehaviour
     private float xOffset;
     private float yOffset;
     private float startPosX;
+
+    public event Action EventBallDestroyBlock;
     private void Start()
     {
         blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
@@ -51,10 +55,12 @@ public class PoolBlocks : MonoBehaviour
         var pos = new Vector2(xPos, yPos);
         var block = this.pool.GetFreeElement();
         block.transform.position = pos;
+        block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
 
         int typePrefab = Random.Range(0, listSprites.Length);
         SetHealthValue(block, typePrefab);
         SetSprite(block, typePrefab);
+        
     }
 
     public void SetHealthValue(GameObject createadObject, int typePrefab)
@@ -72,5 +78,10 @@ public class PoolBlocks : MonoBehaviour
     public void HideAllObjectsToPool()
     {
         this.pool.HideAllObjectsToPool();
+    }
+
+    public void BallDestroyBlock()
+    {
+        EventBallDestroyBlock?.Invoke();
     }
 }

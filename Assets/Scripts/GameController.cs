@@ -10,9 +10,9 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         uiManager.OnPushStart += CreateLevelOne;
-        racketController.BallTouchedBlock += BallTouchBlock;
         bottomBoard.OnBallTouchBottom += GameEnd;
         uiManager.ShowMenu();
+        blocksController.EventBallDestroyBlock += BallTouchBlock;
     }
 
     private void CreateLevelOne()

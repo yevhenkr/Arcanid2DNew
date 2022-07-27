@@ -1,15 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RacketController : MonoBehaviour
 {
-    public event Action BallTouchedBlock;
     private GameObject racket;
 
     public void SpawnBall()
     {
         GameObject ball = Instantiate(Resources.Load("Ball") as GameObject);
-        ball.GetComponent<Ball>().OnBollCollider += BallTouchBlock;
     }
 
     public void SpawnPlatform()
@@ -17,10 +14,6 @@ public class RacketController : MonoBehaviour
         racket = Instantiate(Resources.Load("Platform") as GameObject);
     }
 
-    public void BallTouchBlock()
-    {
-        BallTouchedBlock?.Invoke();
-    }
 
     public void DestroyRacket()
     {
