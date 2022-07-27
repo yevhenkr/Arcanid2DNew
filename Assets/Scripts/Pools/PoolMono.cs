@@ -78,4 +78,14 @@ public class PoolMono : MonoBehaviour
             element.gameObject.SetActive(false);
         }
     }
+
+    public void ShowAllObjectsToPool()
+    {
+        foreach (var element in this._pool)
+        {
+            element.gameObject.SetActive(true);
+        }
+    }
+
+
 }

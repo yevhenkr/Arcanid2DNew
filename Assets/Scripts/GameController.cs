@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     {
         racketController.SpawnBall();
         racketController.SpawnPlatform();
-        blocksController.GenerationBlocks();
+        blocksController.InitBlocks();
     }
 
     private void BallTouchBlock()

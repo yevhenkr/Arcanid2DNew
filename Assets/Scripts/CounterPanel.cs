@@ -17,6 +17,7 @@ public class CounterPanel : MonoBehaviour
     public void ResetValue()
     {
         counter.text = zero.ToString();
+        count = zero;
     }
 
     public void AddedCount()

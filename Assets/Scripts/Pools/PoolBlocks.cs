@@ -15,26 +15,28 @@ public class PoolBlocks : MonoBehaviour
     private float xOffset;
     private float yOffset;
     private float startPosX;
+    private bool firstStart;
+    private float xPosPrefab;
+    private float yPosPrefab;
 
     public event Action EventBallDestroyBlock;
     private void Start()
     {
+        xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
+        yPosPrefab = blockPrefab.GetComponent<Transform>().position.y;
         blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
         blockHeight = blockPrefab.GetComponent<BoxCollider2D>().size.y;
         xOffset = blockWidth + blockWidth / 10;
         yOffset = blockHeight + blockHeight / 10;
         startPosX = blockPrefab.GetComponent<Transform>().position.x;
         this.pool = new PoolMono(this.blockPrefab.gameObject, this.poolCount, this.transform);
-        
+        firstStart = true;
     }
 
-    public void GenerationBlocks()
+    public void InitBlocks()
     {
-        var xPos = blockPrefab.GetComponent<Transform>().position.x;
-        var yPos = blockPrefab.GetComponent<Transform>().position.y;
         var currentColumn = 0;
         var currentBlock = 0;
-
         for (int x = 0; x < poolCount; x++)
         {
             currentBlock++;
@@ -42,20 +44,25 @@ public class PoolBlocks : MonoBehaviour
             if (currentColumn == columnCount + 1)
             {
                 currentColumn = 1;
-                xPos = startPosX;
-                yPos -= yOffset;
+                xPosPrefab = startPosX;
+                yPosPrefab -= yOffset;
             }
-            this.CreateBlock(xPos, yPos);
-            xPos += xOffset;
+            this.SetParametrInBlock(xPosPrefab, yPosPrefab);
+            xPosPrefab += xOffset;
         }
+        firstStart = false;
     }
-
-    private void CreateBlock(float xPos, float yPos)
+    
+    private void SetParametrInBlock(float xPos, float yPos)
     {
-        var pos = new Vector2(xPos, yPos);
+
         var block = this.pool.GetFreeElement();
-        block.transform.position = pos;
-        block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
+        if (firstStart)
+        {
+            var pos = new Vector2(xPos, yPos);
+            block.transform.position = pos;
+            block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
+        }
 
         int typePrefab = Random.Range(0, listSprites.Length);
         SetHealthValue(block, typePrefab);
@@ -78,6 +85,10 @@ public class PoolBlocks : MonoBehaviour
     public void HideAllObjectsToPool()
     {
         this.pool.HideAllObjectsToPool();
+    }
+    public void ShowAllObjectsToPool()
+    {
+        this.pool.ShowAllObjectsToPool();
     }
 
     public void BallDestroyBlock()
