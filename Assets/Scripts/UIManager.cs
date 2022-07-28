@@ -1,13 +1,20 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
+    [SerializeField] private Button btnStart;
     public event Action OnPushStart;
 
+    private void Start()
+    {
+        btnStart.onClick.AddListener(() => PushStartButton());
+
+    }
 
     public void ShowMenu()
     {
