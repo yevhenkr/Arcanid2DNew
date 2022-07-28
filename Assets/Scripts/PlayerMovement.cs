@@ -2,12 +2,13 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float playerSpeed = 2;
-    public LayerMask blockingLayer;
+    [SerializeField] private float playerSpeed = 2;
+    [SerializeField] private LayerMask blockingLayer;
 
     private Transform playerPos;
     private PolygonCollider2D playerCollider;
-
+    private int horizontal;
+    private float xDir;
 
     void Awake()
     {
@@ -15,8 +16,20 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<PolygonCollider2D>();
     }
 
+    void Update()
+    {
+        MovementPlatform();
+    }
 
-    private bool HitWall(float xDir)
+    private void MovementPlatform()
+    {
+        horizontal = (int) Input.GetAxisRaw("Horizontal");
+        xDir = playerSpeed * horizontal * Time.deltaTime;
+        if (!IsHitWall(horizontal))
+            playerPos.transform.Translate(new Vector3(xDir, 0, 0));
+    }
+
+    private bool IsHitWall(float xDir)
     {
         Vector2 start = playerPos.transform.position;
         Vector2 end = start + new Vector2(xDir, 0);
@@ -28,18 +41,5 @@ public class PlayerMovement : MonoBehaviour
         if (hit.transform == null)
             return false;
         return true;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        int horizontal;
-        float xDir;
-
-        horizontal = (int) Input.GetAxisRaw("Horizontal");
-        xDir = playerSpeed * horizontal * Time.deltaTime;
-        if (!HitWall(horizontal))
-            playerPos.transform.Translate(new Vector3(xDir, 0, 0));
     }
 }

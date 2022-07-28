@@ -6,16 +6,6 @@ public class Block : MonoBehaviour
     public event Action EventDestroyBlock;
     [SerializeField] private int healthPoints;
 
-    public void SetHealthValue(int health)
-    {
-        healthPoints = health;
-    }
-
-    public void SetSprite(Sprite sprite)
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-    }
-
     void OnCollisionEnter2D(Collision2D col)
     {
         healthPoints--;
@@ -29,5 +19,15 @@ public class Block : MonoBehaviour
     {
         EventDestroyBlock?.Invoke();
         gameObject.SetActive(false);
+    }
+
+    public void SetHealthValue(int health)
+    {
+        healthPoints = health;
+    }
+
+    public void SetSprite(Sprite sprite)
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 }

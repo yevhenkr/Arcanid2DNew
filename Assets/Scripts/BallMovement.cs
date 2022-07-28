@@ -14,6 +14,11 @@ public class BallMovement : MonoBehaviour
 
     void FixUpdate()
     {
+        MovementBall();
+    }
+
+    private void MovementBall()
+    {
         jump = (int) Input.GetAxisRaw("Vertical");
         if (jump > 0)
         {
