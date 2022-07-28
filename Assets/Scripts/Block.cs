@@ -4,11 +4,11 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     public event Action EventDestroyBlock;
-    [SerializeField] private int healthPoint;
+    [SerializeField] private int healthPoints;
 
     public void SetHealthValue(int health)
     {
-        healthPoint = health;
+        healthPoints = health;
     }
 
     public void SetSprite(Sprite sprite)
@@ -18,8 +18,8 @@ public class Block : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        healthPoint--;
-        if (healthPoint == 0)
+        healthPoints--;
+        if (healthPoints == 0)
         {
             ReturnToPool();
         }

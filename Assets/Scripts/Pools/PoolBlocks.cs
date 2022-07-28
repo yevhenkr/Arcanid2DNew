@@ -23,12 +23,12 @@ public class PoolBlocks : MonoBehaviour
     private void Start()
     {
         xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
-        yPosPrefab = blockPrefab.GetComponent<Transform>().position.y;
+        yPosPrefab = blockPrefab.GetComponent<Transform>().position.y; 
+        startPosX = blockPrefab.GetComponent<Transform>().position.x;
         blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
         blockHeight = blockPrefab.GetComponent<BoxCollider2D>().size.y;
         xOffset = blockWidth + blockWidth / 10;
         yOffset = blockHeight + blockHeight / 10;
-        startPosX = blockPrefab.GetComponent<Transform>().position.x;
         this.pool = new PoolMono(this.blockPrefab.gameObject, this.poolCount, this.transform);
         firstStart = true;
     }
