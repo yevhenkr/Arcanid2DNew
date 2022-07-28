@@ -56,7 +56,7 @@ public class PoolBlocks : MonoBehaviour
             }
 
             int blockType = Random.Range(0, listSprites.Length);
-            SetHealthValue(block, blockType);
+            SetHealthValue(block, blockType+1);
             SetSprite(block, blockType);
             xPosPrefab += xOffset;
         }
