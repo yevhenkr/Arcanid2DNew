@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerPlatform : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 2;
     public LayerMask blockingLayer;
