@@ -9,14 +9,12 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Ball.cs" t="Include" />
-          <e p="BallBehaviour.cs" t="Include" />
+          <e p="BallMovement.cs" t="Include" />
           <e p="Block.cs" t="Include" />
-          <e p="BlocksController.cs" t="Include" />
           <e p="BottomBoard.cs" t="Include" />
           <e p="CounterPanel.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
-          <e p="PlayerPlatform.cs" t="Include" />
-          <e p="PlayerSpawner.cs" t="Include" />
+          <e p="PlayerMovement.cs" t="Include" />
           <e p="Pools" t="Include">
             <e p="PoolBlocks.cs" t="Include" />
             <e p="PoolMono.cs" t="Include" />

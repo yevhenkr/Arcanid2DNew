@@ -10,10 +10,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button btnStart;
     public event Action OnPushStart;
 
-    private void Start()
+    public void Init()
     {
         btnStart.onClick.AddListener(() => PushStartButton());
-
     }
 
     public void ShowMenu()

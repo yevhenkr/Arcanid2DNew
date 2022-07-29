@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
@@ -9,9 +9,11 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        uiManager.Init();
         uiManager.OnPushStart += CreateLevelOne;
         bottomBoard.OnBallTouchBottom += GameEnd;
         uiManager.ShowMenu();
+        blocksController.Init();
         blocksController.EventBallDestroyBlock += BallTouchBlock;
     }
 

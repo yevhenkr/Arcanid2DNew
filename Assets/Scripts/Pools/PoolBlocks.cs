@@ -20,7 +20,7 @@ public class PoolBlocks : MonoBehaviour
     private float yPosPrefab;
 
     public event Action EventBallDestroyBlock;
-    private void Start()
+    public void Init()
     {
         xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
         yPosPrefab = blockPrefab.GetComponent<Transform>().position.y; 
