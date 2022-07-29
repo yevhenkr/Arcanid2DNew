@@ -12,7 +12,7 @@ public class BallMovement : MonoBehaviour
         ballBody.AddForce(-transform.up * ballSpeed);
     }
 
-    void FixUpdate()
+    void FixedUpdate()
     {
         MovementBall();
     }

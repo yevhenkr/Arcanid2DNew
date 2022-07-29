@@ -11,7 +11,8 @@ public class GameController : MonoBehaviour
     {
         uiManager.Init();
         uiManager.OnPushStart += CreateLevelOne;
-        bottomBoard.OnBallTouchBottom += GameEnd;
+        uiManager.OnPushRestart += GameEnd;
+        racketController.OnGameLose += GameEnd;
         uiManager.ShowMenu();
         blocksController.Init();
         blocksController.EventBallDestroyBlock += BallTouchBlock;
@@ -21,7 +22,7 @@ public class GameController : MonoBehaviour
     {
         racketController.SpawnBall();
         racketController.SpawnPlatform();
-        blocksController.InitBlocks();
+        blocksController.ShowBlocks();
     }
 
     private void BallTouchBlock()

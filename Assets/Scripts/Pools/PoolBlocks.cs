@@ -33,7 +33,7 @@ public class PoolBlocks : MonoBehaviour
         firstStart = true;
     }
 
-    public void InitBlocks()
+    public void ShowBlocks()
     {
         var currentColumn = 0;
         var currentBlock = 0;

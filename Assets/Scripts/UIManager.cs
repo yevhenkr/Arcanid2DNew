@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
     [SerializeField] private Button btnStart;
+    [SerializeField] private Button btnRestart;
     public event Action OnPushStart;
+    public event Action OnPushRestart;
 
     public void Init()
     {
@@ -26,9 +28,14 @@ public class UIManager : MonoBehaviour
     {
         OnPushStart?.Invoke();
         menuPanel.SetActive(false);
-        rightPanel.SetActive();
-    }
+        rightPanel.SetActive();        
+        btnRestart.onClick.AddListener(() => PushRestartButton());
 
+    }
+    public void PushRestartButton()
+    {
+        OnPushRestart?.Invoke();
+    }
     public void CounterAddOne()
     {
         counter.AddedCount();
