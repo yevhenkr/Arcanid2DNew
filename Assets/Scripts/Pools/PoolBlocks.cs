@@ -5,8 +5,8 @@ using Random = UnityEngine.Random;
 public class PoolBlocks : MonoBehaviour
 {
     [SerializeField] private Block blockPrefab;
-    [SerializeField] private int poolCount = 3;
-    [SerializeField] private int columnCount = 5;
+    [SerializeField] private int poolCount;
+    [SerializeField] private int columnCount;
     [SerializeField] private Sprite[] listSprites;
     [SerializeField] private Sprite[] countPrefabType;
     private PoolMono pool;
@@ -18,8 +18,10 @@ public class PoolBlocks : MonoBehaviour
     private bool firstStart;
     private float xPosPrefab;
     private float yPosPrefab;
+    private float blocksOnScene;
 
     public event Action EventBallDestroyBlock;
+    public event Action AllBlocksDestroy;
     public void Init()
     {
         xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
@@ -31,6 +33,7 @@ public class PoolBlocks : MonoBehaviour
         yOffset = blockHeight + blockHeight / 10;
         this.pool = new PoolMono(this.blockPrefab.gameObject, this.poolCount, this.transform);
         firstStart = true;
+        blocksOnScene = poolCount;
     }
 
     public void ShowBlocks()
@@ -87,5 +90,11 @@ public class PoolBlocks : MonoBehaviour
     public void BallDestroyBlock()
     {
         EventBallDestroyBlock?.Invoke();
+        blocksOnScene--;
+        if (0 == blocksOnScene)
+        {
+            AllBlocksDestroy?.Invoke();
+        }
+        
     }
 }

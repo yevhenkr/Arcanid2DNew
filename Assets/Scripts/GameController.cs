@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
+    [SerializeField] private WinPanel winPanel;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour
         uiManager.ShowMenu();
         blocksController.Init();
         blocksController.EventBallDestroyBlock += BallTouchBlock;
+        blocksController.AllBlocksDestroy += GameWin;
         bottomBoard.EventBallIsTouchButtom += GameEnd;
     }
 
@@ -36,5 +38,11 @@ public class GameController : MonoBehaviour
         playerSpawner.DestroyRacket();
         playerSpawner.DestroyBall();
         blocksController.HideAllObjectsToPool();
+    }
+
+    private void GameWin()
+    {
+        GameEnd();
+        winPanel.SetIsActive(true);
     }
 }

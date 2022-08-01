@@ -15,13 +15,15 @@
           <e p="CounterPanel.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="PlayerSpawner.cs" t="Include" />
           <e p="Pools" t="Include">
             <e p="PoolBlocks.cs" t="Include" />
             <e p="PoolMono.cs" t="Include" />
           </e>
-          <e p="RacketController.cs" t="Include" />
+          <e p="RestartButton.cs" t="Include" />
           <e p="RightPanel.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
+          <e p="WinPanel.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
