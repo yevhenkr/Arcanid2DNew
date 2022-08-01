@@ -3,7 +3,7 @@
 public class GameController : MonoBehaviour
 {
     [SerializeField] private PoolBlocks blocksController;
-    [SerializeField] private RacketController racketController;
+    [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
 
@@ -12,16 +12,16 @@ public class GameController : MonoBehaviour
         uiManager.Init();
         uiManager.OnPushStart += CreateLevelOne;
         uiManager.OnPushRestart += GameEnd;
-        racketController.OnGameLose += GameEnd;
         uiManager.ShowMenu();
         blocksController.Init();
         blocksController.EventBallDestroyBlock += BallTouchBlock;
+        bottomBoard.EventBallIsTouchButtom += GameEnd;
     }
 
     private void CreateLevelOne()
     {
-        racketController.SpawnBall();
-        racketController.SpawnPlatform();
+        playerSpawner.SpawnBall();
+        playerSpawner.SpawnPlatform();
         blocksController.ShowBlocks();
     }
 
@@ -33,7 +33,8 @@ public class GameController : MonoBehaviour
     private void GameEnd()
     {
         uiManager.ShowMenu();
-        racketController.DestroyRacket();
+        playerSpawner.DestroyRacket();
+        playerSpawner.DestroyBall();
         blocksController.HideAllObjectsToPool();
     }
 }

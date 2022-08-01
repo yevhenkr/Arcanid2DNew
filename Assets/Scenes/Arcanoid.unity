@@ -713,9 +713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksController: {fileID: 2049069775}
-  racketController: {fileID: 901821006}
+  playerSpawner: {fileID: 901821006}
   uiManager: {fileID: 460037768}
-  bottomBoard: {fileID: 0}
+  bottomBoard: {fileID: 7263010809166684448}
 --- !u!4 &782478107
 Transform:
   m_ObjectHideFlags: 0
@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 901821007}
   - component: {fileID: 901821006}
   m_Layer: 0
-  m_Name: RacketController
+  m_Name: PlayerSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

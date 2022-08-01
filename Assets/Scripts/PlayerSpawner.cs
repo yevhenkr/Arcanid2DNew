@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-public class RacketController : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour
 { 
-    public event Action OnGameLose;
     private GameObject racket;
     private GameObject ball;
 
@@ -25,6 +24,6 @@ public class RacketController : MonoBehaviour
 
     public void DestroyBall()
     {
-        OnGameLose?.Invoke();
+        Destroy(ball);
     }
 }
