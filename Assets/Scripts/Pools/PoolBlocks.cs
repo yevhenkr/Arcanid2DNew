@@ -5,10 +5,10 @@ using Random = UnityEngine.Random;
 public class PoolBlocks : MonoBehaviour
 {
     [SerializeField] private Block blockPrefab;
+    [SerializeField] private BlockConstruсtor blockConstruсtor;
     [SerializeField] private int poolCount;
     [SerializeField] private int columnCount;
     [SerializeField] private Sprite[] listSprites;
-    [SerializeField] private Sprite[] countPrefabType;
     private PoolMono pool;
     private float blockWidth;
     private float blockHeight;
@@ -22,10 +22,11 @@ public class PoolBlocks : MonoBehaviour
 
     public event Action EventBallDestroyBlock;
     public event Action AllBlocksDestroy;
+
     public void Init()
     {
         xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
-        yPosPrefab = blockPrefab.GetComponent<Transform>().position.y; 
+        yPosPrefab = blockPrefab.GetComponent<Transform>().position.y;
         startPosX = blockPrefab.GetComponent<Transform>().position.x;
         blockWidth = blockPrefab.GetComponent<BoxCollider2D>().size.x;
         blockHeight = blockPrefab.GetComponent<BoxCollider2D>().size.y;
@@ -59,29 +60,20 @@ public class PoolBlocks : MonoBehaviour
             }
 
             int blockType = Random.Range(0, listSprites.Length);
-            SetHealthValue(block, blockType+1);
-            SetSprite(block, blockType);
+
+            blockConstruсtor.SetHealthValue(block, blockType + 1);
+            blockConstruсtor.SetSprite(block, listSprites[blockType]);
             xPosPrefab += xOffset;
         }
+
         firstStart = false;
     }
-
-    public void SetHealthValue(GameObject createadObject, int typePrefab)
-    {
-        createadObject.GetComponent<Block>().SetHealthValue(typePrefab);
-    }
-
-    public void SetSprite(GameObject createadObject, int typePrefab)
-    {
-        var t = listSprites[typePrefab];
-        createadObject.GetComponent<Block>().SetSprite(t);
-    }
-
 
     public void HideAllObjectsToPool()
     {
         this.pool.HideAllObjectsToPool();
     }
+
     public void ShowAllObjectsToPool()
     {
         this.pool.ShowAllObjectsToPool();
@@ -95,6 +87,5 @@ public class PoolBlocks : MonoBehaviour
         {
             AllBlocksDestroy?.Invoke();
         }
-        
     }
 }
