@@ -205,7 +205,7 @@ Transform:
   m_LocalScale: {x: 14, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &96041680
 MonoBehaviour:
@@ -527,7 +527,7 @@ Transform:
   - {fileID: 612407380}
   - {fileID: 1339773717724849296}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460037766
 GameObject:
@@ -808,6 +808,7 @@ MonoBehaviour:
   uiManager: {fileID: 460037768}
   bottomBoard: {fileID: 7263010809166684448}
   winPanel: {fileID: 163527789}
+  saveScore: {fileID: 0}
 --- !u!4 &782478107
 Transform:
   m_ObjectHideFlags: 0
@@ -1292,7 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9435b657093a00645848678a1bb6ca0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 200
+  timeRemaining: 0
   timerIsRunning: 0
   timeText: {fileID: 1267352420}
 --- !u!222 &1047280911
@@ -1345,7 +1346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1058032546
 MonoBehaviour:
@@ -2071,6 +2072,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517908072}
   m_CullTransparentMesh: 0
+--- !u!1 &1567393994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567393996}
+  - component: {fileID: 1567393995}
+  m_Layer: 0
+  m_Name: BlockConstructor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1567393995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567393994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773386972629b334cb02e67916e47d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1567393996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567393994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1826.2002, y: 901.375, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616115903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1748338857
 GameObject:
@@ -2394,7 +2438,7 @@ RectTransform:
   - {fileID: 1137850039}
   - {fileID: 163527788}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3127,6 +3171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 372323329105268537, guid: 6da3e7466b3a3ae46a35a9dba75a1460,
     type: 3}
+  "blockConstru\u0441tor": {fileID: 1567393995}
   poolCount: 20
   columnCount: 5
   listSprites:
@@ -3135,7 +3180,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d74272fe1e059694b99e14b670227bc7, type: 3}
   - {fileID: 21300000, guid: 0fab727b76c65c84f941c9c9a8ba5bf9, type: 3}
   - {fileID: 21300000, guid: 4360c6060ba60ca41b56e3fff469101e, type: 3}
-  countPrefabType: []
 --- !u!4 &2049069776
 Transform:
   m_ObjectHideFlags: 0
@@ -3148,7 +3192,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2050144322
 GameObject:
@@ -3241,6 +3285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed5bccfb6fc9c6419f1f3f836b4e872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: {fileID: 1047280910}
 --- !u!4 &1339773717724849296
 Transform:
   m_ObjectHideFlags: 0

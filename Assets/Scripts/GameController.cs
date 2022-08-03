@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
     [SerializeField] private WinPanel winPanel;
+    [SerializeField] private SaveScore saveScore;
 
     private void Start()
     {
@@ -44,5 +45,6 @@ public class GameController : MonoBehaviour
     {
         GameEnd();
         winPanel.SetIsActive(true);
+        //saveScore.SetFloat();
     }
 }
