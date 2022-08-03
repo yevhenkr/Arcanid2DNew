@@ -13,4 +13,9 @@ public class RightPanel : MonoBehaviour
       timer.ResetTimer();
       this.gameObject.SetActive(false);
    }
+
+   public float GetTime()
+   {
+      return timer.timeRemaining;
+   }
 }

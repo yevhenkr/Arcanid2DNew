@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class WinPanel : MonoBehaviour
 {
    [SerializeField] private Button buttonOK;
+   [SerializeField] private PanelTheBestScore tePanelTheBestScore;
 
    private void Start()
    {
@@ -13,5 +14,12 @@ public class WinPanel : MonoBehaviour
    public void SetIsActive(bool active)
    {
       gameObject.SetActive(active);
+     
+
+   }
+
+   public void ShowScoreBestPanel(BestScoreStruct bestScoreStruct)
+   {
+      tePanelTheBestScore.ShowScore(bestScoreStruct);
    }
 }

@@ -1,13 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class SaveScore: MonoBehaviour
+public class SaveScore : MonoBehaviour
 {
-    public void SetFloat(string countBlock, float time)
+    public void SetBestScore(string countBlock, float time)
     {
-        PlayerPrefs.SetFloat(countBlock, time);
+        var oldTime = PlayerPrefs.GetFloat(countBlock);
+        if (time < oldTime)
+        {
+            PlayerPrefs.SetFloat(countBlock, time);
+        }
     }
-    public void GetFloat(string countBlock)
+
+    public BestScoreStruct GetBestScoreStruct(string countBlock, float currentTime)
     {
-        print(PlayerPrefs.GetFloat(countBlock));
+        var bestTime = PlayerPrefs.GetFloat(countBlock);
+        return new BestScoreStruct(Int32.Parse(countBlock), currentTime, bestTime);
     }
 }

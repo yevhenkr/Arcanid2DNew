@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private WinPanel winPanel;
     [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
     [SerializeField] private Button btnStart;
@@ -39,5 +40,16 @@ public class UIManager : MonoBehaviour
     public void CounterAddOne()
     {
         counter.AddedCount();
+    }
+    
+    public float GetTime()
+    {
+        return rightPanel.GetTime();
+    }
+    
+     public void ShowWinPanel(BestScoreStruct bestScoreStruct)
+    {
+        winPanel.SetIsActive(true);
+        winPanel.ShowScoreBestPanel(bestScoreStruct);
     }
 }

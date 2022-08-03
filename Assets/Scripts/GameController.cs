@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
-    [SerializeField] private WinPanel winPanel;
     [SerializeField] private SaveScore saveScore;
 
     private void Start()
@@ -43,8 +42,9 @@ public class GameController : MonoBehaviour
 
     private void GameWin()
     {
+        BestScoreStruct bestScoreStruct = saveScore.GetBestScoreStruct(blocksController.DestroyBlock.ToString() ,uiManager.GetTime());
+        saveScore.SetBestScore(blocksController.DestroyBlock.ToString() ,uiManager.GetTime());
         GameEnd();
-        winPanel.SetIsActive(true);
-        //saveScore.SetFloat();
+        uiManager.ShowWinPanel(bestScoreStruct);
     }
 }

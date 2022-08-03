@@ -19,6 +19,7 @@ public class PoolBlocks : MonoBehaviour
     private float xPosPrefab;
     private float yPosPrefab;
     private float blocksOnScene;
+    public int DestroyBlock { get; private set; }
 
     public event Action EventBallDestroyBlock;
     public event Action AllBlocksDestroy;
@@ -34,11 +35,12 @@ public class PoolBlocks : MonoBehaviour
         yOffset = blockHeight + blockHeight / 10;
         this.pool = new PoolMono(this.blockPrefab.gameObject, this.poolCount, this.transform);
         firstStart = true;
-        blocksOnScene = poolCount;
     }
 
     public void ShowBlocks()
     {
+        DestroyBlock = 0;
+        blocksOnScene = poolCount;
         var currentColumn = 0;
         var currentBlock = 0;
         for (int x = 0; x < poolCount; x++)
@@ -83,6 +85,8 @@ public class PoolBlocks : MonoBehaviour
     {
         EventBallDestroyBlock?.Invoke();
         blocksOnScene--;
+        DestroyBlock++;
+        
         if (0 == blocksOnScene)
         {
             AllBlocksDestroy?.Invoke();
