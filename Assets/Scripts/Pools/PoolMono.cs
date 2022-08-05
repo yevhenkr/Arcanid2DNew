@@ -10,7 +10,7 @@ public class PoolMono : MonoBehaviour
     public Transform Container { get; }
 
     private List<GameObject> _pool;
-    private List<string> listSprits = new List<string>(){"ashdsj","askls"};
+    private List<string> listSprits = new List<string>() {"ashdsj", "askls"};
     private int countPrefabType = 5;
 
     public PoolMono(GameObject prefab, int count)
@@ -86,6 +86,4 @@ public class PoolMono : MonoBehaviour
             element.gameObject.SetActive(true);
         }
     }
-
-
 }

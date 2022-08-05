@@ -2,20 +2,21 @@
 
 public class RightPanel : MonoBehaviour
 {
-   [SerializeField] private Timer timer;
-   public void SetActive()
-   {
-      this.gameObject.SetActive(true);
-   }
-   
-   public void SetActiveFalce()
-   {
-      timer.ResetTimer();
-      this.gameObject.SetActive(false);
-   }
+    [SerializeField] private Timer timer;
 
-   public float GetTime()
-   {
-      return timer.timeRemaining;
-   }
+    public void SetActive()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    public void SetActiveFalce()
+    {
+        timer.ResetTimer();
+        this.gameObject.SetActive(false);
+    }
+
+    public float GetTime()
+    {
+        return timer.timeRemaining;
+    }
 }

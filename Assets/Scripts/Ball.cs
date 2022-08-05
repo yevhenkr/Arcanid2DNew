@@ -11,12 +11,12 @@ public class Ball : MonoBehaviour
         if (collider.gameObject.TryGetComponent(out Block block))
         {
             OnBollCollider?.Invoke();
-            }
+        }
 
         if (collider.gameObject.TryGetComponent(out BottomBoard bottomBoard))
         {
-           OnBollTouchButtom?.Invoke();
-           DestroyBoll();
+            OnBollTouchButtom?.Invoke();
+            DestroyBoll();
         }
     }
 

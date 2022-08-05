@@ -29,25 +29,26 @@ public class UIManager : MonoBehaviour
     {
         OnPushStart?.Invoke();
         menuPanel.SetActive(false);
-        rightPanel.SetActive();        
+        rightPanel.SetActive();
         btnRestart.onClick.AddListener(() => PushRestartButton());
-
     }
+
     public void PushRestartButton()
     {
         OnPushRestart?.Invoke();
     }
+
     public void CounterAddOne()
     {
         counter.AddedCount();
     }
-    
+
     public float GetTime()
     {
         return rightPanel.GetTime();
     }
-    
-     public void ShowWinPanel(BestScoreStruct bestScoreStruct)
+
+    public void ShowWinPanel(BestScoreStruct bestScoreStruct)
     {
         winPanel.SetIsActive(true);
         winPanel.ShowScoreBestPanel(bestScoreStruct);

@@ -1,4 +1,4 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
@@ -42,8 +42,9 @@ public class GameController : MonoBehaviour
 
     private void GameWin()
     {
-        BestScoreStruct bestScoreStruct = saveScore.GetBestScoreStruct(blocksController.DestroyBlock.ToString() ,uiManager.GetTime());
-        saveScore.SetBestScore(blocksController.DestroyBlock.ToString() ,uiManager.GetTime());
+        BestScoreStruct bestScoreStruct =
+            saveScore.GetBestScoreStruct(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
+        saveScore.SetBestScore(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
         GameEnd();
         uiManager.ShowWinPanel(bestScoreStruct);
     }
