@@ -4,23 +4,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private MenuPanel menuPanel;
     [SerializeField] private WinPanel winPanel;
     [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
-    [SerializeField] private Button btnStart;
+    
     [SerializeField] private Button btnRestart;
     public event Action OnPushStart;
     public event Action OnPushRestart;
 
     public void Init()
     {
-        btnStart.onClick.AddListener(() => PushStartButton());
+        menuPanel.btnStart.onClick.AddListener(() => PushStartButton());
     }
 
     public void ShowMenu()
     {
-        menuPanel.SetActive(true);
+        menuPanel.Show();
         counter.FerstStart();
         rightPanel.SetActiveFalce();
     }
@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     public void PushStartButton()
     {
         OnPushStart?.Invoke();
-        menuPanel.SetActive(false);
+        menuPanel.Hide();
         rightPanel.SetActive();
         btnRestart.onClick.AddListener(() => PushRestartButton());
     }
