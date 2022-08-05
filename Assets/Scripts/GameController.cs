@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
@@ -20,11 +21,11 @@ public class GameController : MonoBehaviour
         bottomBoard.EventBallIsTouchButtom += GameEnd;
     }
 
-    private void CreateLevelOne()
+    private void CreateLevelOne(int typeBlock)
     {
         playerSpawner.SpawnBall();
         playerSpawner.SpawnPlatform();
-        blocksController.ShowBlocks();
+        blocksController.ShowBlocks(typeBlock);
     }
 
     private void BallTouchBlock()

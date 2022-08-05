@@ -37,7 +37,7 @@ public class PoolBlocks : MonoBehaviour
         firstStart = true;
     }
 
-    public void ShowBlocks()
+    public void ShowBlocks(int typeButton)
     {
         DestroyBlock = 0;
         blocksOnScene = poolCount;
@@ -61,8 +61,7 @@ public class PoolBlocks : MonoBehaviour
                 block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
             }
 
-            int blockType = Random.Range(0, listSprites.Length);
-
+            int blockType = GetButtonType(typeButton);
             blockConstruсtor.SetHealthValue(block, blockType + 1);
             blockConstruсtor.SetSprite(block, listSprites[blockType]);
             xPosPrefab += xOffset;
@@ -70,6 +69,39 @@ public class PoolBlocks : MonoBehaviour
 
         firstStart = false;
     }
+
+    private int GetButtonType(int typeBlock)
+    {
+        if ((typeBlock == (int) TypeButtonStart.Blue))
+        {
+            return 0;
+        }
+
+        if ((typeBlock == (int) TypeButtonStart.Yellow))
+        {
+            return 1;
+        }
+
+        if ((typeBlock == (int) TypeButtonStart.Green))
+        {
+            return 2;
+        }
+
+        if ((typeBlock == (int) TypeButtonStart.Pink))
+        {
+            return 3;
+        }
+
+        if ((typeBlock == (int) TypeButtonStart.Red))
+        {
+            return 4;
+        }
+        else
+        {
+            return Random.Range(0, listSprites.Length);
+        }
+    }
+
 
     public void HideAllObjectsToPool()
     {
