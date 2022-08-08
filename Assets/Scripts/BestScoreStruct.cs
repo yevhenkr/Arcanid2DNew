@@ -1,8 +1,12 @@
 ﻿public struct BestScoreStruct
 {
-    public int countBlock { get; private set; }
-    public float yourTime { get; private set; }
-    public float bestTime { get; private set; }
+    private int countBlock;
+    private float yourTime;
+    private float bestTime;
+
+    public int CountBlock => countBlock;
+    public float YourTime => yourTime;
+    public float BestTime => bestTime;
 
     public BestScoreStruct(int countBlock, float yourTime, float bestTime)
     {

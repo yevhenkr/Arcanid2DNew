@@ -9,14 +9,14 @@ public class PanelTheBestScore : MonoBehaviour
 
     public void ShowScore(BestScoreStruct bestScoreStruct)
     {
-        countBlocks.text = bestScoreStruct.countBlock.ToString();
+        countBlocks.text = bestScoreStruct.CountBlock.ToString();
 
-        float minutes = Mathf.FloorToInt(bestScoreStruct.yourTime / 60);
-        float seconds = Mathf.FloorToInt(bestScoreStruct.yourTime % 60);
+        float minutes = Mathf.FloorToInt(bestScoreStruct.YourTime / 60);
+        float seconds = Mathf.FloorToInt(bestScoreStruct.YourTime % 60);
         this.yourTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        minutes = Mathf.FloorToInt(bestScoreStruct.bestTime / 60);
-        seconds = Mathf.FloorToInt(bestScoreStruct.bestTime % 60);
+        minutes = Mathf.FloorToInt(bestScoreStruct.BestTime / 60);
+        seconds = Mathf.FloorToInt(bestScoreStruct.BestTime % 60);
         this.theBestTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
