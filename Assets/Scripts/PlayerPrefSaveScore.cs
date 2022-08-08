@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class SaveScore : MonoBehaviour
+public class PlayerPrefSaveScore : MonoBehaviour, ISystemSave
 {
     public void SetBestScore(string countBlock, float time)
     {
@@ -11,7 +11,7 @@ public class SaveScore : MonoBehaviour
             PlayerPrefs.SetFloat(countBlock, time);
         }
     }
-
+    
     public BestScoreStruct GetBestScoreStruct(string countBlock, float currentTime)
     {
         var bestTime = PlayerPrefs.GetFloat(countBlock);
