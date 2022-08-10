@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BallMovement : MonoBehaviour
 {
     [SerializeField] private float ballSpeed = 2;

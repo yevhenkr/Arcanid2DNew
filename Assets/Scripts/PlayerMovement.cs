@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Transform))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 2;

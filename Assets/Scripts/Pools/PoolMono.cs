@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PoolMono : MonoBehaviour
+public class PoolMono
 {
     public GameObject Prefab { get; }
     public bool AutoExpand { get; set; }
