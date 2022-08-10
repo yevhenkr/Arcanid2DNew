@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        playerPrefSaveScore = new PlayerPrefSaveScore();
+        playerPrefSaveScore = new PlayerPrefSave();
         uiManager.Init();
         uiManager.OnPushStart += CreateLevelOne;
         uiManager.OnPushRestart += GameEnd;
