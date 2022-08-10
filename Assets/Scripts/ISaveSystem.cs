@@ -1,8 +1,8 @@
 ﻿
 public interface ISystemSave
 {
-    void SetBestScore(string countBlock, float time);
+    void Save(string countBlock, float time);
 
-    BestScoreStruct GetBestScoreStruct(string countBlock, float currentTime);
+    BestScoreStruct Load(string countBlock, float currentTime);
 
 }

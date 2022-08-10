@@ -44,8 +44,8 @@ public class GameController : MonoBehaviour
     private void GameWin()
     {
         BestScoreStruct bestScoreStruct =
-            playerPrefSaveScore.GetBestScoreStruct(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
-        playerPrefSaveScore.SetBestScore(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
+            playerPrefSaveScore.Load(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
+        playerPrefSaveScore.Save(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
         GameEnd();
         uiManager.ShowWinPanel(bestScoreStruct);
     }
