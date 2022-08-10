@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerPrefSaveScore : MonoBehaviour, ISystemSave
+public class PlayerPrefSave : MonoBehaviour, ISystemSave
 {
     public void SetBestScore(string countBlock, float time)
     {
