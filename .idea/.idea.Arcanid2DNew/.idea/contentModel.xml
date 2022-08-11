@@ -10,20 +10,35 @@
         <e p="Scripts" t="Include">
           <e p="Ball.cs" t="Include" />
           <e p="BallMovement.cs" t="Include" />
+          <e p="BestScoreStruct.cs" t="Include" />
           <e p="Block.cs" t="Include" />
+          <e p="BlockConstruсtor.cs" t="Include" />
+          <e p="BlockData.cs" t="Include" />
           <e p="BottomBoard.cs" t="Include" />
-          <e p="CounterPanel.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
+          <e p="IPauseHandler.cs" t="Include" />
+          <e p="ISaveSystem.cs" t="Include" />
+          <e p="PauseManager.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="PlayerPrefSave.cs" t="Include" />
           <e p="PlayerSpawner.cs" t="Include" />
           <e p="Pools" t="Include">
             <e p="PoolBlocks.cs" t="Include" />
             <e p="PoolMono.cs" t="Include" />
           </e>
-          <e p="RestartButton.cs" t="Include" />
-          <e p="RightPanel.cs" t="Include" />
-          <e p="UIManager.cs" t="Include" />
-          <e p="WinPanel.cs" t="Include" />
+          <e p="ProjectContext.cs" t="Include" />
+          <e p="Timer.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="AnchorSnapEditor.cs" t="Include" />
+            <e p="ButtonPause.cs" t="Include" />
+            <e p="CounterPanel.cs" t="Include" />
+            <e p="MenuPanel.cs" t="Include" />
+            <e p="PanelTheBestScore.cs" t="Include" />
+            <e p="RestartButton.cs" t="Include" />
+            <e p="RightPanel.cs" t="Include" />
+            <e p="UIManager.cs" t="Include" />
+            <e p="WinPanel.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
