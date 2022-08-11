@@ -11,9 +11,13 @@ public class UIManager : MonoBehaviour
     private int typeBtn;
     
     [SerializeField] private Button btnRestart;
+    [SerializeField] private ButtonPause btnPause;
     public event Action<int> OnPushStart;
     public event Action OnPushRestart;
-
+    private void Awake()
+    {
+        btnPause.ValueChanged += OnPauseClicked;
+    }
     public void Init()
     {
         SubscribeButtonsPush();
@@ -51,6 +55,11 @@ public class UIManager : MonoBehaviour
         OnPushRestart?.Invoke();
     }
 
+    public void OnPauseClicked(bool isPaused)
+    {
+        ProjectContext.Instance.PauseManager.SetPaused(isPaused);
+    }
+    
     public void CounterAddOne()
     {
         counter.AddedCount();

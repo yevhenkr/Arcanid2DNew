@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour, IPauseHandler
 {
     [SerializeField] private PoolBlocks blocksController;
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
+
     private ISystemSave playerPrefSaveScore;
+    private bool IsPaused => ProjectContext.Instance.PauseManager.IsPaused;
 
     private void Start()
     {
+        
+        ProjectContext.Instance.Initialize();
+        ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
         uiManager.Init();
         uiManager.OnPushStart += CreateLevelOne;
@@ -48,5 +53,10 @@ public class GameController : MonoBehaviour
         playerPrefSaveScore.Save(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
         GameEnd();
         uiManager.ShowWinPanel(bestScoreStruct);
+    }
+
+    void IPauseHandler.SetPaused(bool isPaused)
+    {
+        Time.timeScale = isPaused ? 0f : 1f;
     }
 }
