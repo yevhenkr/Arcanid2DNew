@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private WinPanel winPanel;
     [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
+    [SerializeField] private GameObject pauseLayer;
     private int typeBtn;
     
     [SerializeField] private Button btnRestart;
@@ -58,6 +59,7 @@ public class UIManager : MonoBehaviour
     public void OnPauseClicked(bool isPaused)
     {
         ProjectContext.Instance.PauseManager.SetPaused(isPaused);
+        pauseLayer.SetActive(isPaused);
     }
     
     public void CounterAddOne()
