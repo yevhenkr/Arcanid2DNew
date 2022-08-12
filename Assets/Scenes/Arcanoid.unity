@@ -4680,8 +4680,8 @@ MonoBehaviour:
   blockPrefab: {fileID: 372323329105268537, guid: 6da3e7466b3a3ae46a35a9dba75a1460,
     type: 3}
   "blockConstru\u0441tor": {fileID: 1567393995}
-  poolCount: 5
-  columnCount: 1
+  poolCount: 35
+  columnCount: 7
   listSprites:
   - {fileID: 21300000, guid: c554d38e664baf44f85f31a4730ef889, type: 3}
   - {fileID: 21300000, guid: 2a8c4f6944c6af14789646d7af5f0e88, type: 3}
