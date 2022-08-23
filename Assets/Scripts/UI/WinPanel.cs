@@ -5,7 +5,9 @@ public class WinPanel : MonoBehaviour
 {
     [SerializeField] private Button buttonOK;
     [SerializeField] private PanelTheBestScore tePanelTheBestScore;
-
+    /// <summary>
+    /// ///////////
+    /// </summary>
     private void Start()
     {
         buttonOK.onClick.AddListener(() => SetIsActive(false));
