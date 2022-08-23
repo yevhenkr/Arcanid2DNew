@@ -8,6 +8,7 @@ public class WinPanel : MonoBehaviour
     /// <summary>
     /// ///////////
     /// </summary>
+    /// ////
     private void Start()
     {
         buttonOK.onClick.AddListener(() => SetIsActive(false));
