@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public enum TypeButtonStart: int
@@ -18,8 +19,14 @@ public class MenuPanel : MonoBehaviour
     [SerializeField]private Button btnGreen;
     [SerializeField]private Button btnPink;
     [SerializeField]private Button btnRed;
+    public event Action<int> OnPushStart;
 
-    public void Show()
+    public void Init()
+    {
+        SubscribeButtonsPush();
+    }
+
+    private void Show()
     {
         gameObject.SetActive(true);
     }
@@ -28,29 +35,22 @@ public class MenuPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public Button GetBtnStart()
+    private void SubscribeButtonsPush()
     {
-        return btnStart;
+        btnStart.onClick.AddListener(() => StartButtonPush((int)TypeButtonStart.Random));
+        btnBlue.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Blue));
+        btnYellow.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Yellow));
+        btnGreen.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Green));
+        btnPink.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Pink));
+        btnRed.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Red));
     }
-    public Button GetBtnBlue()
+    public void StartButtonPush(int typeBtn)
     {
-        return btnBlue;
+        OnPushStart?.Invoke(typeBtn);
+        Hide();
     }
-    public Button GetBtnYellow()
+    public void ButtonPush(int typeBtn)
     {
-        return btnYellow;
+        OnPushStart?.Invoke(typeBtn);
     }
-    public Button GetBtnGreen()
-    {
-        return btnGreen;
-    }
-    public Button GetBtnPink()
-    {
-        return btnPink;
-    }
-    public Button GetBtnRed()
-    {
-        return btnRed;
-    }
-    
 }

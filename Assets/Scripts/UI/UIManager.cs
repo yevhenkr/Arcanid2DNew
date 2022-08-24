@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private MenuPanel menuPanel;
     [SerializeField] private WinPanel winPanel;
     [SerializeField] private RightPanel rightPanel;
     [SerializeField] private CounterPanel counter;
@@ -21,20 +20,17 @@ public class UIManager : MonoBehaviour
     }
     public void Init()
     {
-        SubscribeButtonsPush();
     }
 
     public void ShowMenu()
     {
-        menuPanel.Show();
         counter.FerstStart();
-        rightPanel.SetActiveFalce();
+        rightPanel.SetActive();
     }
 
     public void StartButtonPush(int typeBtn)
     {
         OnPushStart?.Invoke(typeBtn);
-        menuPanel.Hide();
         rightPanel.SetActive();
         btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
@@ -46,7 +42,6 @@ public class UIManager : MonoBehaviour
 
     private void ButtonBush()
     {
-        menuPanel.Hide();
         rightPanel.SetActive();
         btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
@@ -76,21 +71,5 @@ public class UIManager : MonoBehaviour
     {
         winPanel.SetIsActive(true);
         winPanel.ShowScoreBestPanel(bestScoreStruct);
-    }
-
-    private void SubscribeButtonsPush()
-    {
-        var btnStart = menuPanel.GetBtnStart();
-        btnStart.onClick.AddListener(() => StartButtonPush((int)TypeButtonStart.Random));
-        var btnBlue = menuPanel.GetBtnBlue();
-        btnBlue.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Blue));
-        var btnYellow = menuPanel.GetBtnYellow();
-        btnYellow.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Yellow));
-        var btnGreen = menuPanel.GetBtnGreen();
-        btnGreen.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Green));
-        var btnPink = menuPanel.GetBtnPink();
-        btnPink.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Pink));
-        var btnRed = menuPanel.GetBtnRed();
-        btnRed.onClick.AddListener(() => ButtonPush((int)TypeButtonStart.Red));
     }
 }

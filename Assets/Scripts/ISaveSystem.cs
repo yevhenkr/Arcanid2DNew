@@ -1,8 +1,6 @@
-﻿
-public interface ISystemSave
+﻿public interface ISystemSave<T>
 {
-    void Save(string countBlock, float time);
+    void Save(float time,string countBlock);
 
-    BestScoreStruct Load(string countBlock, float currentTime);
-
+    T Load(string countBlock, float currentTime);
 }

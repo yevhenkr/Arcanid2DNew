@@ -7,20 +7,20 @@ public class GameController : MonoBehaviour, IPauseHandler
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
 
-    private ISystemSave playerPrefSaveScore;
+    private ISystemSave<BestScoreStruct> playerPrefSaveScore;
+    private SaveTypeGame playerPrefSave;
     private bool IsPaused => ProjectContext.Instance.PauseManager.IsPaused;
 
     private void Start()
     {
-        
+        playerPrefSave = new SaveTypeGame();
         ProjectContext.Instance.Initialize();
         ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
-        uiManager.Init();
-        uiManager.OnPushStart += CreateLevelOne;
         uiManager.OnPushRestart += GameEnd;
         uiManager.ShowMenu();
         blocksController.Init();
+        CreateLevelOne(playerPrefSave.Load("typeBlock"));
         blocksController.EventBallDestroyBlock += BallTouchBlock;
         blocksController.AllBlocksDestroy += GameWin;
         bottomBoard.EventBallIsTouchButtom += GameEnd;
@@ -49,8 +49,8 @@ public class GameController : MonoBehaviour, IPauseHandler
     private void GameWin()
     {
         BestScoreStruct bestScoreStruct =
-            playerPrefSaveScore.Load(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
-        playerPrefSaveScore.Save(blocksController.DestroyBlock.ToString(), uiManager.GetTime());
+            playerPrefSaveScore.Load(blocksController.DestroyBlock.ToString(),uiManager.GetTime());
+        playerPrefSaveScore.Save(uiManager.GetTime(), blocksController.DestroyBlock.ToString());
         GameEnd();
         uiManager.ShowWinPanel(bestScoreStruct);
     }
