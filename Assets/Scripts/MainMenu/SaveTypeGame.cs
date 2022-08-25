@@ -2,8 +2,6 @@
 
 public class SaveTypeGame : MonoBehaviour, ISystemSave<int>
 {
-    private string typeBlock = "typeBlock";
-
     public void Save(float nuberTypeBlock,string typeBlock = "typeBlock")
     {
         PlayerPrefs.SetFloat(typeBlock, nuberTypeBlock);

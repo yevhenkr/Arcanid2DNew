@@ -10,19 +10,18 @@ public class GameController : MonoBehaviour, IPauseHandler
     [SerializeField] private SceneLoader sceneLoader;
 
     private ISystemSave<BestScoreStruct> playerPrefSaveScore;
-    private SaveTypeGame playerPrefSave;
-    private bool IsPaused => ProjectContext.Instance.PauseManager.IsPaused;
+    private SaveTypeGame saveTypeGame;
 
     private void Start()
     {
-        playerPrefSave = new SaveTypeGame();
+        saveTypeGame = new SaveTypeGame();
         ProjectContext.Instance.Initialize();
         ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
         uiManager.OnPushRestart += GameRestart;
         uiManager.ShowMenu();
         blocksController.Init();
-        CreateLevelOne(playerPrefSave.Load("typeBlock"));
+        CreateLevelOne(saveTypeGame.Load("typeBlock"));
         blocksController.EventBallDestroyBlock += BallTouchBlock;
         blocksController.AllBlocksDestroy += GameWin;
         bottomBoard.EventBallIsTouchButtom += GameEnd;
