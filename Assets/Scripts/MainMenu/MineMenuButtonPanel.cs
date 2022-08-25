@@ -11,7 +11,7 @@ public enum TypeButtonStart: int
     Red,
     Random
 }
-public class MenuPanel : MonoBehaviour
+public class MineMenuButtonPanel : MonoBehaviour
 {
     [SerializeField]private Button btnStart;
     [SerializeField]private Button btnBlue;

@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameStarter : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     private SaveTypeGame playerPrefSave;
-    [SerializeField] private MenuPanel menuPanel;
+    [SerializeField] private MineMenuButtonPanel menuPanel;
     [SerializeField] private SceneLoader sceneLoader;
     void Start()
     {
         playerPrefSave = new SaveTypeGame();
         menuPanel.Init();
         menuPanel.OnPushStart += LoadGame;
-        playerPrefSave = new SaveTypeGame();
     }
 
     private void LoadGame(int typeBlock)
