@@ -17,11 +17,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         btnPause.ValueChanged += OnPauseClicked;
-    }
-    public void Init()
-    {
-
         btnRestart.onClick.AddListener(() => RestartButtonPush());
+
     }
 
     public void ShowMenu()
@@ -32,9 +29,6 @@ public class UIManager : MonoBehaviour
 
     public void StartButtonPush(int typeBtn)
     {
-        //OnPushStart?.Invoke(typeBtn);
-        //rightPanel.SetActive();
-       // btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
     public void ButtonPush(int typeBtn)
     {
@@ -45,7 +39,6 @@ public class UIManager : MonoBehaviour
     private void ButtonBush()
     {
         rightPanel.Show();
-        btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
     
     public void RestartButtonPush()

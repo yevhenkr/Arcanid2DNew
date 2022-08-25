@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour, IPauseHandler
         playerPrefSaveScore = new PlayerPrefSave();
         uiManager.OnPushRestart += GameRestart;
         uiManager.ShowMenu();
-        uiManager.Init();
         blocksController.Init();
         CreateLevelOne(playerPrefSave.Load("typeBlock"));
         blocksController.EventBallDestroyBlock += BallTouchBlock;
@@ -48,10 +47,8 @@ public class GameController : MonoBehaviour, IPauseHandler
 
     private void GameRestart()
     {
-        uiManager.ShowMenu();
-        playerSpawner.DestroyRacket();
-        playerSpawner.DestroyBall();
-        blocksController.HideAllObjectsToPool();
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
     private void GameWin()
     {
