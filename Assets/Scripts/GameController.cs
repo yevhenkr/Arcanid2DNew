@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IPauseHandler
 {
@@ -17,8 +18,9 @@ public class GameController : MonoBehaviour, IPauseHandler
         ProjectContext.Instance.Initialize();
         ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
-        uiManager.OnPushRestart += GameEnd;
+        uiManager.OnPushRestart += GameRestart;
         uiManager.ShowMenu();
+        uiManager.Init();
         blocksController.Init();
         CreateLevelOne(playerPrefSave.Load("typeBlock"));
         blocksController.EventBallDestroyBlock += BallTouchBlock;
@@ -40,12 +42,17 @@ public class GameController : MonoBehaviour, IPauseHandler
 
     private void GameEnd()
     {
+
+        SceneManager.LoadScene("Arcanoid");
+    }
+
+    private void GameRestart()
+    {
         uiManager.ShowMenu();
         playerSpawner.DestroyRacket();
         playerSpawner.DestroyBall();
         blocksController.HideAllObjectsToPool();
     }
-
     private void GameWin()
     {
         BestScoreStruct bestScoreStruct =

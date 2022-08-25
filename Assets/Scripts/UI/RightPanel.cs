@@ -4,12 +4,12 @@ public class RightPanel : MonoBehaviour
 {
     [SerializeField] private Timer timer;
 
-    public void SetActive()
+    public void Show()
     {
         this.gameObject.SetActive(true);
     }
 
-    public void SetActiveFalce()
+    public void Hide()
     {
         timer.ResetTimer();
         this.gameObject.SetActive(false);

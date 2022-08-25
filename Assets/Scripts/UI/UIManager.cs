@@ -20,19 +20,21 @@ public class UIManager : MonoBehaviour
     }
     public void Init()
     {
+
+        btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
 
     public void ShowMenu()
     {
         counter.FerstStart();
-        rightPanel.SetActive();
+        rightPanel.Show();
     }
 
     public void StartButtonPush(int typeBtn)
     {
-        OnPushStart?.Invoke(typeBtn);
-        rightPanel.SetActive();
-        btnRestart.onClick.AddListener(() => RestartButtonPush());
+        //OnPushStart?.Invoke(typeBtn);
+        //rightPanel.SetActive();
+       // btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
     public void ButtonPush(int typeBtn)
     {
@@ -42,7 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void ButtonBush()
     {
-        rightPanel.SetActive();
+        rightPanel.Show();
         btnRestart.onClick.AddListener(() => RestartButtonPush());
     }
     
