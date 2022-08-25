@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private Button btnRestart;
     [SerializeField] private ButtonPause btnPause;
-    public event Action<int> OnPushStart;
     public event Action OnPushRestart;
     private void Awake()
     {
@@ -27,20 +26,6 @@ public class UIManager : MonoBehaviour
         rightPanel.Show();
     }
 
-    public void StartButtonPush(int typeBtn)
-    {
-    }
-    public void ButtonPush(int typeBtn)
-    {
-        OnPushStart?.Invoke(typeBtn);
-        ButtonBush();
-    }
-
-    private void ButtonBush()
-    {
-        rightPanel.Show();
-    }
-    
     public void RestartButtonPush()
     {
         OnPushRestart?.Invoke();

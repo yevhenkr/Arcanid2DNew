@@ -26,15 +26,6 @@ public class MenuPanel : MonoBehaviour
         SubscribeButtonsPush();
     }
 
-    private void Show()
-    {
-        gameObject.SetActive(true);
-    }
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
-
     private void SubscribeButtonsPush()
     {
         btnStart.onClick.AddListener(() => StartButtonPush((int)TypeButtonStart.Random));
@@ -47,7 +38,6 @@ public class MenuPanel : MonoBehaviour
     public void StartButtonPush(int typeBtn)
     {
         OnPushStart?.Invoke(typeBtn);
-        Hide();
     }
     public void ButtonPush(int typeBtn)
     {

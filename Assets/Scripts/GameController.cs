@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class GameController : MonoBehaviour, IPauseHandler
 {
@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour, IPauseHandler
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private BottomBoard bottomBoard;
+    [SerializeField] private SceneLoader sceneLoader;
 
     private ISystemSave<BestScoreStruct> playerPrefSaveScore;
     private SaveTypeGame playerPrefSave;
@@ -41,14 +42,12 @@ public class GameController : MonoBehaviour, IPauseHandler
 
     private void GameEnd()
     {
-
-        SceneManager.LoadScene("Arcanoid");
+        sceneLoader.LoadMainMenu();
     }
 
     private void GameRestart()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentScene);
+        sceneLoader.RestartCurrentScene();
     }
     private void GameWin()
     {
