@@ -11,12 +11,15 @@ public class UIManager : MonoBehaviour
     private int typeBtn;
     
     [SerializeField] private Button btnRestart;
+    [SerializeField] private Button btnMainMenu;
     [SerializeField] private ButtonPause btnPause;
     public event Action OnPushRestart;
+    public event Action OnPushMainMenu;
     private void Awake()
     {
         btnPause.ValueChanged += OnPauseClicked;
-        btnRestart.onClick.AddListener(() => RestartButtonPush());
+        btnRestart.onClick.AddListener(() => OnPushRestart?.Invoke());
+        btnMainMenu.onClick.AddListener(() => OnPushMainMenu?.Invoke());
 
     }
 
@@ -24,11 +27,6 @@ public class UIManager : MonoBehaviour
     {
         counter.FerstStart();
         rightPanel.Show();
-    }
-
-    public void RestartButtonPush()
-    {
-        OnPushRestart?.Invoke();
     }
 
     public void OnPauseClicked(bool isPaused)

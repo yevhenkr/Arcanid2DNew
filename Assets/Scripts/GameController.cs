@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour, IPauseHandler
         ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
         uiManager.OnPushRestart += GameRestart;
+        uiManager.OnPushMainMenu += GameEnd;
         uiManager.ShowMenu();
         blocksController.Init();
         CreateLevelOne(saveTypeGame.Load("typeBlock"));
