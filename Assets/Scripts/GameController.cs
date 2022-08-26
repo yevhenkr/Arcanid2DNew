@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class GameController : MonoBehaviour, IPauseHandler
 {
     [SerializeField] private PoolBlocks blocksController;
@@ -11,10 +10,12 @@ public class GameController : MonoBehaviour, IPauseHandler
 
     private ISystemSave<BestScoreStruct> playerPrefSaveScore;
     private SaveTypeGame saveTypeGame;
+    private SaveCountBlock saveCount;
 
     private void Start()
     {
         saveTypeGame = new SaveTypeGame();
+        saveCount = new SaveCountBlock();
         ProjectContext.Instance.Initialize();
         ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
