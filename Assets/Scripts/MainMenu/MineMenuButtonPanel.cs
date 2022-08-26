@@ -13,6 +13,7 @@ public enum TypeButtonStart: int
 }
 public class MineMenuButtonPanel : MonoBehaviour
 {
+    [SerializeField]private CountBloksPanel countBloksPanel;
     [SerializeField]private Button btnStart;
     [SerializeField]private Button btnBlue;
     [SerializeField]private Button btnYellow;
@@ -24,6 +25,7 @@ public class MineMenuButtonPanel : MonoBehaviour
     public void Init()
     {
         SubscribeButtonsPush();
+        countBloksPanel.Init();
     }
 
     private void SubscribeButtonsPush()
