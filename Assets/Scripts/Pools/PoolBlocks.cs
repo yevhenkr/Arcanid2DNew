@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,8 @@ public class PoolBlocks : MonoBehaviour
         
     private int poolCount;
     private PoolMono pool;
+    private List<bool> visibleBlocks;
+    private SaveCountBlock saveCountBlock;
     private float blockWidth;
     private float blockHeight;
     private float xOffset;
@@ -20,6 +23,7 @@ public class PoolBlocks : MonoBehaviour
     private float xPosPrefab;
     private float yPosPrefab;
     private float blocksOnScene;
+    private float countCisibleBlock;
     public int DestroyBlock { get; private set; }
 
     public event Action EventBallDestroyBlock;
@@ -28,6 +32,10 @@ public class PoolBlocks : MonoBehaviour
     public void Init()
     {
         poolCount = Config.MaxCoutsBlocks;
+        visibleBlocks = new List<bool>(Config.MaxCoutsBlocks);
+        SetListFalse();
+        saveCountBlock = new SaveCountBlock();
+        countCisibleBlock = saveCountBlock.Load("countBlocks");
         xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
         yPosPrefab = blockPrefab.GetComponent<Transform>().position.y;
         startPosX = blockPrefab.GetComponent<Transform>().position.x;
@@ -41,70 +49,43 @@ public class PoolBlocks : MonoBehaviour
 
     public void ShowBlocks(int typeButton)
     {
+        ChoseVisibleBlock(countCisibleBlock);
         DestroyBlock = 0;
-        blocksOnScene = poolCount;
         var currentColumn = 0;
         var currentBlock = 0;
+
         for (int x = 0; x < poolCount; x++)
         {
             currentBlock++;
             currentColumn++;
-            if (currentColumn == columnCount + 1)
-            {
+            if (currentColumn == columnCount + 1){
                 currentColumn = 1;
                 xPosPrefab = startPosX;
                 yPosPrefab -= yOffset;
             }
+            if (visibleBlocks[x] == true){
 
-            var block = this.pool.GetFreeElement();
-            if (firstStart)
-            {
+                var block = this.pool.GetFreeElement();
+                if (firstStart){
                 block.transform.position = new Vector2(xPosPrefab, yPosPrefab);
                 block.GetComponent<Block>().EventDestroyBlock += BallDestroyBlock;
+                }
+                if (typeButton == (int)TypeButtonStart.Random)
+                {
+                    var blockType = Random.Range(0, listSprites.Length);
+                    blockConstruсtor.SetHealthValue(block, blockType + 1);
+                    blockConstruсtor.SetSprite(block, listSprites[blockType]);
+                }
+                else
+                {
+                    blockConstruсtor.SetHealthValue(block, typeButton + 1);
+                    blockConstruсtor.SetSprite(block, listSprites[typeButton]);
+                }
             }
-
-            int blockType = GetButtonType(typeButton);
-            blockConstruсtor.SetHealthValue(block, blockType + 1);
-            blockConstruсtor.SetSprite(block, listSprites[blockType]);
             xPosPrefab += xOffset;
         }
-
         firstStart = false;
     }
-
-    private int GetButtonType(int typeBlock)
-    {
-        if ((typeBlock == (int) TypeButtonStart.Blue))
-        {
-            return 0;
-        }
-
-        if ((typeBlock == (int) TypeButtonStart.Yellow))
-        {
-            return 1;
-        }
-
-        if ((typeBlock == (int) TypeButtonStart.Green))
-        {
-            return 2;
-        }
-
-        if ((typeBlock == (int) TypeButtonStart.Pink))
-        {
-            return 3;
-        }
-
-        if ((typeBlock == (int) TypeButtonStart.Red))
-        {
-            return 4;
-        }
-        else
-        {
-            return Random.Range(0, listSprites.Length);
-        }
-    }
-
-
     public void HideAllObjectsToPool()
     {
         this.pool.HideAllObjectsToPool();
@@ -115,7 +96,7 @@ public class PoolBlocks : MonoBehaviour
         this.pool.ShowAllObjectsToPool();
     }
 
-    public void BallDestroyBlock() //???
+    public void BallDestroyBlock()
     {
         EventBallDestroyBlock?.Invoke();
         blocksOnScene--;
@@ -125,5 +106,30 @@ public class PoolBlocks : MonoBehaviour
         {
             AllBlocksDestroy?.Invoke();
         }
+    }
+
+    private void SetListFalse()
+    {
+        for (int i = 0; i < Config.MaxCoutsBlocks; i++)
+        {
+            visibleBlocks.Add(false);
+        }
+    }
+
+    private void ChoseVisibleBlock(float coutBlock)
+    {
+        for (int i = 0; i < coutBlock; i++)
+        {
+            int randomPosition = Random.Range(0, Config.MaxCoutsBlocks);
+            if (visibleBlocks[randomPosition] == false)
+            {
+                visibleBlocks[randomPosition] = true;
+            }
+            else
+            {
+                ++i;
+            }
+        }
+
     }
 }

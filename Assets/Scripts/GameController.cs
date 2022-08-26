@@ -10,12 +10,10 @@ public class GameController : MonoBehaviour, IPauseHandler
 
     private ISystemSave<BestScoreStruct> playerPrefSaveScore;
     private SaveTypeGame saveTypeGame;
-    private SaveCountBlock saveCount;
 
     private void Start()
     {
         saveTypeGame = new SaveTypeGame();
-        saveCount = new SaveCountBlock();
         ProjectContext.Instance.Initialize();
         ProjectContext.Instance.PauseManager.Register(this);
         playerPrefSaveScore = new PlayerPrefSave();
@@ -23,6 +21,7 @@ public class GameController : MonoBehaviour, IPauseHandler
         uiManager.OnPushMainMenu += GameEnd;
         uiManager.ShowMenu();
         blocksController.Init();
+        
         CreateLevelOne(saveTypeGame.Load("typeBlock"));
         blocksController.EventBallDestroyBlock += BallTouchBlock;
         blocksController.AllBlocksDestroy += GameWin;
