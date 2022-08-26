@@ -6,9 +6,10 @@ public class PoolBlocks : MonoBehaviour
 {
     [SerializeField] private Block blockPrefab;
     [SerializeField] private BlockConstruсtor blockConstruсtor;
-    [SerializeField] private int poolCount;
     [SerializeField] private int columnCount;
     [SerializeField] private Sprite[] listSprites;
+        
+    private int poolCount;
     private PoolMono pool;
     private float blockWidth;
     private float blockHeight;
@@ -26,6 +27,7 @@ public class PoolBlocks : MonoBehaviour
 
     public void Init()
     {
+        poolCount = Config.MaxCoutsBlocks;
         xPosPrefab = blockPrefab.GetComponent<Transform>().position.x;
         yPosPrefab = blockPrefab.GetComponent<Transform>().position.y;
         startPosX = blockPrefab.GetComponent<Transform>().position.x;

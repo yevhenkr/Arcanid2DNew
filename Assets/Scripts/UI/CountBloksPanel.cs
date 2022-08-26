@@ -19,14 +19,13 @@ public class CountBloksPanel : MonoBehaviour
     private void Plus()
     {
         var count = Convert.ToInt32(choseCount.text);
-        choseCount.text = (++count).ToString();
+        if (Config.MaxCoutsBlocks > count)
+            choseCount.text = (++count).ToString();
     }
     private void Minus()
     {
         var count = Convert.ToInt32(choseCount.text);
         if (count > 0)
-        {
             choseCount.text = (--count).ToString();
-        }
     }
 }
