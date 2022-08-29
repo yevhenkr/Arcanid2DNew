@@ -15,6 +15,7 @@ public class CountBloksPanel : MonoBehaviour
         plus.onClick.AddListener(() => Plus());
         minus.onClick.AddListener(() => Minus());
         saveCount = new SaveCountBlock();
+        SetCount(saveCount.Load("countBlocks"));
     }
 
     private void Plus()
@@ -36,4 +37,9 @@ public class CountBloksPanel : MonoBehaviour
             saveCount.Save(count);
         }
     }
+    private void SetCount(int count)
+    {
+            choseCount.text = count.ToString();
+    }
+
 }
